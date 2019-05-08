@@ -42,11 +42,13 @@ public class ProductsWithNoGlutenContainingIngredients {
 			line = br.readLine();
 			while (line != null) {
 				line = line.trim();
-				String sku = null;
-				String description = null;
-				String units = null;
-				String size = "";
-				int space1 = 0, space2 = 0;
+				String sku, description, units, size;
+				int space1, space2;
+				sku = null;
+				description = null;
+				units = null;
+				size = "";
+				space1 = 0; space2 = 0;
 //				System.out.println(line);
 				try {
 					space1 = line.indexOf(" ");
@@ -60,8 +62,8 @@ public class ProductsWithNoGlutenContainingIngredients {
 						size = line.substring(space2);
 						description = line.substring(space1, space2).trim();
 					}
-					System.out.println(sku);
-					if (description != null) {
+					if (isNumeric(sku) && description != null && size != null && units != null) {
+						System.out.println(sku);
 						products.add(new ProductsWithNoGlutenContainingIngredients(sku,description, size, units));
 					}
 				}
@@ -72,5 +74,19 @@ public class ProductsWithNoGlutenContainingIngredients {
 			System.err.println(ex.getLocalizedMessage());
 			try {br.close();} catch (Exception ex1) {}
 		}
+	}
+	/**
+	 * Check to see if a string contains a numeric value
+	 * @param str The string to check
+	 * @return True if str can be converted to a number
+	 * Lifted from https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+	 */
+	private static boolean isNumeric(String str) { 
+		try {  
+		    Double.parseDouble(str);  
+		    return true;
+		} catch(NumberFormatException e){  
+			return false;  
+		}  
 	}
 }
