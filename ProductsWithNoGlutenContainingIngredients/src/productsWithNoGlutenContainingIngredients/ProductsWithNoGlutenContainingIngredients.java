@@ -42,11 +42,12 @@ public class ProductsWithNoGlutenContainingIngredients {
 			line = br.readLine();
 			while (line != null) {
 				line = line.trim();
-				String sku, description, units, size;
+				String sku, description, units, size, endsWith;
 				int space1, space2;
 				sku = null;
 				description = null;
 				units = null;
+				endsWith = null;
 				size = "";
 				space1 = 0; space2 = 0;
 //				System.out.println(line);
@@ -55,11 +56,24 @@ public class ProductsWithNoGlutenContainingIngredients {
 					sku = line.substring(0,space1);
 				} catch (Exception ex) {sku = null;}
 				if (sku != null) {
-					if (line.toUpperCase().endsWith("OZ")) {
-						units = "OZ";
-						line = line.substring(0,line.length() - 2).trim();
+					boolean foundUnits;
+					foundUnits = false;
+					space2 = line.lastIndexOf(" ");
+					endsWith = line.substring(space2).trim();
+					switch (endsWith.toUpperCase()) {
+						case "OZ":
+							foundUnits = true; break;
+						case "CAP":
+							foundUnits = true; break;
+						case "TAB":
+						foundUnits = true; break;
+						case "CT":
+						foundUnits = true; break;
+					}
+					if (foundUnits) {
+						units = line.substring(space2).trim();
 						space2 = line.lastIndexOf(" ");
-						size = line.substring(space2);
+						size = line.substring(space2).trim();
 						description = line.substring(space1, space2).trim();
 					}
 					if (isNumeric(sku) && description != null && size != null && units != null) {
