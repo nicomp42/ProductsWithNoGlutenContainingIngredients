@@ -43,6 +43,7 @@ public class ProductsWithNoGlutenContainingIngredients {
 	/**
 	 * Read the text file and parse it into parts
 	 * @param fileName The file name to parse
+	 * @param products the target for the list of products extracted from the file
 	 */
 	public static void process(String fileName, 
 			                   ArrayList<ProductsWithNoGlutenContainingIngredients> products) {

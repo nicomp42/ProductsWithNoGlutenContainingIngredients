@@ -14,5 +14,4 @@ public class Main {
 														  products);
 		System.out.println(products.size() + " items added");
 	}
-
 }
