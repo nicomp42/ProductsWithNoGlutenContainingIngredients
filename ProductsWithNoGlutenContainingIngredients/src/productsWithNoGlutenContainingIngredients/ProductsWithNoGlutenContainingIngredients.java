@@ -7,6 +7,7 @@ package productsWithNoGlutenContainingIngredients;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsWithNoGlutenContainingIngredients {
 	private String sku;
@@ -46,7 +47,7 @@ public class ProductsWithNoGlutenContainingIngredients {
 	 * @param products the target for the list of products extracted from the file
 	 */
 	public static void process(String fileName, 
-			                   ArrayList<ProductsWithNoGlutenContainingIngredients> products) {
+			                   List<ProductsWithNoGlutenContainingIngredients> products) {
 		FileReader fr = null;
 		BufferedReader br = null;
 		try {
