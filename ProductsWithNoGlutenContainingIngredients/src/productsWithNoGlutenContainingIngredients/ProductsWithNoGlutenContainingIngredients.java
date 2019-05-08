@@ -14,19 +14,32 @@ public class ProductsWithNoGlutenContainingIngredients {
 	private String units;
 	private String size;
 	
+	/**
+	 * Constructor
+	 */
 	public ProductsWithNoGlutenContainingIngredients() {
 		sku = "";
 		description = "";
 		units = "";
 		size = "";
 	}
+	/**
+	 * Constructor
+	 * @param sku
+	 * @param description
+	 * @param size
+	 * @param units
+	 */
 	public ProductsWithNoGlutenContainingIngredients(String sku, String description, String size, String units) {
 		this.sku = sku;
 		this.description = description;
 		this.size = size;
 		this.units = units;
 	}	
-	
+	public String getSku() {return sku;}
+	public String getDescription() {return description;}
+	public String getUnits() {return units;}
+	public String getSize() {return size;}
 	/**
 	 * Read the text file and parse it into parts
 	 * @param fileName The file name to parse
