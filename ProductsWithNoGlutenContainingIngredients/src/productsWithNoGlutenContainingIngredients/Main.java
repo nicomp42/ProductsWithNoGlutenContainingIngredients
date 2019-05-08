@@ -4,11 +4,15 @@
  */
 package productsWithNoGlutenContainingIngredients;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
-		ProductsWithNoGlutenContainingIngredients.process("resources/productsWithNoGlutenContainingIngredients.txt");
-
+		ArrayList<ProductsWithNoGlutenContainingIngredients> products = new ArrayList<>();
+		ProductsWithNoGlutenContainingIngredients.process("resources/productsWithNoGlutenContainingIngredients.txt",
+														  products);
+		System.out.println(products.size() + " items added");
 	}
 
 }
